@@ -145,6 +145,7 @@ return array(
 		'search' => 'Keresés erre „%s”',
 		'share' => array(
 			'_' => 'Lekérdezés megosztása linkkel',
+			'greader' => 'Shareable link to the GReader JSON',	// TODO
 			'help' => 'Ezt a linket küldd el hogy megoszd a lekérdezést bárkivel',
 			'html' => 'Megosztható link a HTML oldalhoz',
 			'opml' => 'Megosztható link az OPML hírforrás listához',
@@ -219,7 +220,7 @@ return array(
 		),
 		'hide_read_feeds' => 'Rejtse el a kategóriákat és hírforrásokat ahol nincs olvasatlan cikk (nem működik egyszerre a „Minden cikk megjelenítése” beállítással)',
 		'img_with_lazyload' => 'Használjon <em>lazy load</em> módot a képek betöltésére',
-		'jump_next' => 'ugorjon a következő olvasatlan testvérre (hírforrás vagy kategória)',
+		'jump_next' => 'ugorjon a következő olvasatlan testvérre',
 		'mark_updated_article_unread' => 'Frissített cikkek megjelölése olvasatlanként',
 		'number_divided_when_reader' => 'Olvasó módban 2-vel osztható szám.',
 		'read' => array(
@@ -249,6 +250,9 @@ return array(
 			'_' => 'Rendezési sorrend',
 			'newer_first' => 'Újabb elöl',
 			'older_first' => 'Régebbi elöl',
+		),
+		'star' => array(
+			'when' => 'Mark an article as favourite…',	// TODO
 		),
 		'sticky_post' => 'A cikk gördüljön felülre, amikor megnyitásra kerül',
 		'title' => 'Olvasás',

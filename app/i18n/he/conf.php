@@ -145,6 +145,7 @@ return array(
 		'search' => 'חיפוש “%s”',
 		'share' => array(
 			'_' => 'Share this query by link',	// TODO
+			'greader' => 'Shareable link to the GReader JSON',	// TODO
 			'help' => 'Give this link if you want to share this query with anyone',	// TODO
 			'html' => 'Shareable link to the HTML page',	// TODO
 			'opml' => 'Shareable link to the OPML list of feeds',	// TODO
@@ -219,7 +220,7 @@ return array(
 		),
 		'hide_read_feeds' => 'הסתרת קטגוריות &amp; הזנות ללא מאמרים שלא נקראו (לא עובד יחד עם “הצגת כל המאמרים”)',
 		'img_with_lazyload' => 'שימוש ב "טעינה עצלה" על מנת לטעון תמונות',
-		'jump_next' => 'קפיצה לפריט הבא שלא נקרא (הזנה או קטגוריה)',
+		'jump_next' => 'קפיצה לפריט הבא שלא נקרא',
 		'mark_updated_article_unread' => 'Mark updated articles as unread',	// TODO
 		'number_divided_when_reader' => 'חלוקה ב2 במצב קריאה.',
 		'read' => array(
@@ -249,6 +250,9 @@ return array(
 			'_' => 'סדר המיון',
 			'newer_first' => 'חדשים בראש',
 			'older_first' => 'ישנים יותר בראש',
+		),
+		'star' => array(
+			'when' => 'Mark an article as favourite…',	// TODO
 		),
 		'sticky_post' => 'הצמדת המאמר לחלק העליון כאשר הוא פתוח',
 		'title' => 'קריאה',

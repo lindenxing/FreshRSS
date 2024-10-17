@@ -145,6 +145,7 @@ return array(
 		'search' => '“%s”의 검색 결과',
 		'share' => array(
 			'_' => '링크로 쿼리 공유',
+			'greader' => 'Shareable link to the GReader JSON',	// TODO
 			'help' => '링크를 사용해서 쿼리를 공유하세요',
 			'html' => 'HTML 공유 링크',
 			'opml' => 'OPML 피드 목록 공유 링크',
@@ -219,7 +220,7 @@ return array(
 		),
 		'hide_read_feeds' => '읽지 않은 글이 없는 카테고리와 피드 감추기 (“모든 글 표시”가 설정된 경우 동작하지 않습니다)',
 		'img_with_lazyload' => '그림을 불러오는 데에 <em>lazy load</em> 모드 사용하기',
-		'jump_next' => '다음 읽지 않은 항목으로 이동 (피드 또는 카테고리)',
+		'jump_next' => '다음 읽지 않은 항목으로 이동',
 		'mark_updated_article_unread' => '갱신 된 글을 읽지 않음으로 표시',
 		'number_divided_when_reader' => '읽기 모드에서는 절반만 표시됩니다.',
 		'read' => array(
@@ -249,6 +250,9 @@ return array(
 			'_' => '정렬 순서',
 			'newer_first' => '최근 글 먼저',
 			'older_first' => '오래된 글 먼저',
+		),
+		'star' => array(
+			'when' => 'Mark an article as favourite…',	// TODO
 		),
 		'sticky_post' => '글이 펼쳐진 경우 최상단에 고정하기',
 		'title' => '읽기',

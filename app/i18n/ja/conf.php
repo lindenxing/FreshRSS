@@ -145,6 +145,7 @@ return array(
 		'search' => '“%s”で検索する',
 		'share' => array(
 			'_' => 'このクエリをリンクで共有する',
+			'greader' => 'Shareable link to the GReader JSON',	// TODO
 			'help' => 'このクエリを誰かと共有したい場合は、このリンクを提供してください',
 			'html' => 'HTMLページへの共有リンク',
 			'opml' => 'フィードのOPMLリストへの共有リンク',
@@ -219,7 +220,7 @@ return array(
 		),
 		'hide_read_feeds' => 'カテゴリを非表示 & 未読の記事がないフィード ("すべてに既読を付ける”では適用しません)',
 		'img_with_lazyload' => '<em>lazy load</em>を写真の読み込み時に使う',
-		'jump_next' => '次の未読の姉妹記事へ移る (フィードやカテゴリ)',
+		'jump_next' => '次の未読の姉妹記事へ移る',
 		'mark_updated_article_unread' => '更新された記事を未読とする',
 		'number_divided_when_reader' => 'リーディングビューを2分割する',
 		'read' => array(
@@ -249,6 +250,9 @@ return array(
 			'_' => '順序',
 			'newer_first' => '最新のものを先頭にする',
 			'older_first' => '最古のものを先頭にする',
+		),
+		'star' => array(
+			'when' => 'Mark an article as favourite…',	// TODO
 		),
 		'sticky_post' => '開いたときにトップを記事にする',
 		'title' => 'リーディング',
