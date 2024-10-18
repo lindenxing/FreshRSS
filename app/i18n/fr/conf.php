@@ -145,6 +145,7 @@ return array(
 		'search' => 'Recherche de « %s »',
 		'share' => array(
 			'_' => 'Partager ce filtre par lien',
+			'greader' => 'Lien partageable au format JSON GReader',
 			'help' => 'Donner ce lien pour partager le contenu du filtre avec d’autres personnes',
 			'html' => 'Lien partageable de la page HTML',
 			'opml' => 'Lien partageable de la liste des flux au format OPML',
@@ -219,7 +220,7 @@ return array(
 		),
 		'hide_read_feeds' => 'Cacher les catégories & flux sans article non-lu (ne fonctionne pas avec la configuration « Afficher tous les articles »)',
 		'img_with_lazyload' => 'Utiliser le mode <em>chargement différé</em> pour les images',
-		'jump_next' => 'sauter au prochain voisin non lu (flux ou catégorie)',
+		'jump_next' => 'sauter au prochain voisin non lu',
 		'mark_updated_article_unread' => 'Marquer les articles mis à jour comme non-lus',
 		'number_divided_when_reader' => 'Divisé par 2 dans la vue de lecture.',
 		'read' => array(
@@ -249,6 +250,9 @@ return array(
 			'_' => 'Ordre de tri',
 			'newer_first' => 'Plus récents en premier',
 			'older_first' => 'Plus anciens en premier',
+		),
+		'star' => array(
+			'when' => 'Marquer un article comme favori…',
 		),
 		'sticky_post' => 'Aligner l’article en haut quand il est ouvert',
 		'title' => 'Lecture',

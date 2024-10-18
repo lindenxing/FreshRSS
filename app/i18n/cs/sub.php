@@ -29,7 +29,9 @@ return array(
 			'help' => 'Zadejte adresu URL na <a href="http://opml.org/" target="_blank">OPML soubor</a> k dynamickému naplnění této kategorie RSS kanály',
 		),
 		'empty' => 'Vyprázdit kategorii',
+		'expand' => 'Expand category',	// TODO
 		'information' => 'Informace',
+		'open' => 'Open category',	// TODO
 		'opml_url' => 'ADRESA URL OPML',
 		'position' => 'Zobrazit pozici',
 		'position_help' => 'Pro ovládání pořadí řazení kategorií',
@@ -38,7 +40,7 @@ return array(
 	'feed' => array(
 		'accept_cookies' => 'Přijímat soubory cookie',
 		'accept_cookies_help' => 'Povolit serveru feedu nastavit soubory cookie (uložené v paměti pouze po dobu trvání požadavku).',
-		'add' => 'Přidat kanál RSS',
+		'add' => 'Přidat kanál',
 		'advanced' => 'Rozšířené',
 		'archiving' => 'Archivace',
 		'auth' => array(
@@ -61,7 +63,7 @@ return array(
 		'css_path' => 'Přepínač CSS článku na původních webových stránkách',
 		'css_path_filter' => array(
 			'_' => 'selektor CSS prvků, které mají být odstraněny',
-			'help' => 'Selektor CSS může být seznam, například: <kbd>.footer, .aside</kbd>',
+			'help' => 'Selektor CSS může být seznam, například: <kbd>.footer, .aside, p[data-sanitized-class="menu"]</kbd>',
 		),
 		'description' => 'Popis',
 		'empty' => 'Tento kanál je prázdný. Ověřte prosím, zda je stále udržován.',
@@ -75,10 +77,19 @@ return array(
 			'_' => 'Akce filtrování',
 			'help' => 'Zapište jeden filtr hledání na řádek. Operátoři <a href="https://freshrss.github.io/FreshRSS/en/users/10_filter.html#with-the-search-field" target="_blank">viz dokumentace</a>.',
 		),
+		'http_headers' => 'HTTP Headers',	// TODO
+		'http_headers_help' => 'Headers are separated by a newline, and the name and value of a header are separated by a colon (e.g: <kbd><code>Accept: application/atom+xml<br />Authorization: Bearer some-token</code></kbd>).',	// TODO
 		'information' => 'Informace',
 		'keep_min' => 'Minimální počet článků pro ponechání',
 		'kind' => array(
 			'_' => 'Typ zdroje feedu',
+			'html_json' => array(
+				'_' => 'HTML + XPath + JSON dot notation (JSON in HTML)',	// TODO
+				'xpath' => array(
+					'_' => 'XPath for JSON in HTML',	// TODO
+					'help' => 'Example: <code>//script[@type="application/json"]</code>',	// TODO
+				),
+			),
 			'html_xpath' => array(
 				'_' => 'HTML + XPath (Web scraping)',	// IGNORE
 				'feed_title' => array(
@@ -135,7 +146,7 @@ return array(
 				'help' => 'JSON s tečkovým zápisem používá tečky mezi objekty a závorky pro pole. (e.g. <code>data.items[0].title</code>)',
 				'item' => array(
 					'_' => 'vyhledávání nových <strong>položek</strong><br /><small>(nejdůležitější)</small>',
-					'help' => 'JSON cesta k poli obsahujícímu položky, např.: <code>newsItems</code>',
+					'help' => 'JSON cesta k poli obsahujícímu položky, např.: <code>$</code> or <code>newsItems</code>',	// DIRTY
 				),
 				'item_author' => 'autor položky',
 				'item_categories' => 'štítky položky',
@@ -183,9 +194,13 @@ return array(
 		'method_help' => 'Payload metody POST má automatickou podporu pro <code>application/x-www-form-urlencoded</code> a <code>application/json</code>',
 		'method_postparams' => 'Payload pro metodu POST',
 		'moved_category_deleted' => 'Když odstraníte kategorii, její kanály jsou automaticky přesunuty do <em>%s</em>.',
-		'mute' => 'ztlumit',
+		'mute' => array(
+			'_' => 'ztlumit',
+			'state_is_muted' => 'This feed is muted',	// TODO
+		),
 		'no_selected' => 'Nejsou vybrány žádné kanály.',
 		'number_entries' => '%d článků',
+		'open_feed' => 'Open feed %s',	// TODO
 		'priority' => array(
 			'_' => 'Viditelnost',
 			'archived' => 'Nezobrazovat (archivováno)',
@@ -213,6 +228,16 @@ return array(
 		'title' => 'Název',
 		'title_add' => 'Přidat kanál RSS',
 		'ttl' => 'Neobnovovat automaticky častěji než',
+		'unicityCriteria' => array(
+			'_' => 'Article unicity criteria',	// TODO
+			'forced' => '<span title="Block the unicity criteria, even when the feed has duplicate articles">forced</span>',	// TODO
+			'help' => 'Relevant for invalid feeds.<br />⚠️ Changing the policy will create duplicates.',	// TODO
+			'id' => 'Standard ID (default)',	// TODO
+			'link' => 'Link',	// TODO
+			'sha1:link_published' => 'Link + Date',	// TODO
+			'sha1:link_published_title' => 'Link + Date + Title',	// TODO
+			'sha1:link_published_title_content' => 'Link + Date + Title + Content',	// TODO
+		),
 		'url' => 'Adresa URL kanálu',
 		'useragent' => 'Nastavte uživatelský agent pro načítání tohoto kanálu',
 		'useragent_help' => 'Příklad: <kbd>Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:86.0)</kbd>',

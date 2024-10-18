@@ -91,7 +91,7 @@ class FreshRSS_Import_Service {
 
 				if ($can_create_category) {
 					$category = $this->createCategory($category_element, $dry_run);
-					if ($category) {
+					if ($category !== null) {
 						$categories_by_names[$category->name()] = $category;
 						$nb_categories++;
 					}
@@ -102,7 +102,7 @@ class FreshRSS_Import_Service {
 				}
 			}
 
-			if (!$category) {
+			if ($category === null) {
 				// Category can be null if the feeds weren't in a category
 				// outline, or if we weren't able to create the category.
 				$category = $default_category;
@@ -121,7 +121,7 @@ class FreshRSS_Import_Service {
 					break;
 				}
 
-				if ($this->createFeed($feed_element, $category, $dry_run)) {
+				if ($this->createFeed($feed_element, $category, $dry_run) !== null) {
 					// TODO what if the feed already exists in the database?
 					$nb_feeds++;
 				} else {
@@ -167,6 +167,9 @@ class FreshRSS_Import_Service {
 					break;
 				case strtolower(FreshRSS_Export_Service::TYPE_JSONFEED):
 					$feed->_kind(FreshRSS_Feed::KIND_JSONFEED);
+					break;
+				case strtolower(FreshRSS_Export_Service::TYPE_HTML_XPATH_JSON_DOTNOTATION):
+					$feed->_kind(FreshRSS_Feed::KIND_HTML_XPATH_JSON_DOTNOTATION);
 					break;
 				default:
 					$feed->_kind(FreshRSS_Feed::KIND_RSS);
@@ -257,6 +260,7 @@ class FreshRSS_Import_Service {
 			if (!empty($jsonSettings)) {
 				$feed->_attribute('json_dotnotation', $jsonSettings);
 			}
+			$feed->_attribute('xPathToJson', $feed_elt['frss:xPathToJson'] ?? null);
 
 			$curl_params = [];
 			if (isset($feed_elt['frss:CURLOPT_COOKIE'])) {
@@ -301,7 +305,7 @@ class FreshRSS_Import_Service {
 				return $feed;
 			}
 
-			if ($feed != null) {
+			if ($feed !== null) {
 				// addFeedObject checks if feed is already in DB
 				$id = $this->feedDAO->addFeedObject($feed);
 				if ($id == false) {
@@ -316,7 +320,7 @@ class FreshRSS_Import_Service {
 			$this->lastStatus = false;
 		}
 
-		$clean_url = SimplePie_Misc::url_remove_credentials($url);
+		$clean_url = \SimplePie\Misc::url_remove_credentials($url);
 		self::log("Cannot create {$clean_url} feed in category {$category->name()}");
 		return null;
 	}
@@ -362,10 +366,8 @@ class FreshRSS_Import_Service {
 	 * This method is applied to a list of outlines. It merges the different
 	 * list of feeds from several outlines into one array.
 	 *
-	 * @param array<array<mixed>> $outlines
-	 *     The outlines from which to extract the outlines.
-	 * @param string $parent_category_name
-	 *     The name of the parent category of the current outlines.
+	 * @param array<array<mixed>> $outlines The outlines from which to extract the outlines.
+	 * @param string $parent_category_name The name of the parent category of the current outlines.
 	 * @return array{0:array<string,array<string,string>>,1:array<string,array<array<string,string>>>}
 	 */
 	private function loadFromOutlines(array $outlines, string $parent_category_name): array {
@@ -405,10 +407,8 @@ class FreshRSS_Import_Service {
 	 * exists), it will add the outline to an array accessible by its category
 	 * name.
 	 *
-	 * @param array<mixed> $outline
-	 *     The outline from which to extract the categories and feeds outlines.
-	 * @param string $parent_category_name
-	 *     The name of the parent category of the current outline.
+	 * @param array<mixed> $outline The outline from which to extract the categories and feeds outlines.
+	 * @param string $parent_category_name The name of the parent category of the current outline.
 	 *
 	 * @return array{0:array<string,array<string,string>>,1:array<array<string,array<string,string>>>}
 	 */

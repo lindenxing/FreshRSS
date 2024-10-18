@@ -145,6 +145,7 @@ return array(
 		'search' => '搜索 “%s”',
 		'share' => array(
 			'_' => '分享您的自定义查询',
+			'greader' => 'Shareable link to the GReader JSON',	// TODO
 			'help' => '获取此自定义查询的分享链接',
 			'html' => 'HTML 页面的分享链接',
 			'opml' => '订阅源 OPML 的分享链接',
@@ -219,7 +220,7 @@ return array(
 		),
 		'hide_read_feeds' => '隐藏没有未读文章的分类和订阅源（启用“显示所有文章”后不生效）',
 		'img_with_lazyload' => '延迟加载图片',
-		'jump_next' => '跳转到下一未读项（订阅源或分类）',
+		'jump_next' => '跳转到下一未读项',
 		'mark_updated_article_unread' => '将有更新的文章设为未读',
 		'number_divided_when_reader' => '阅读视图中显示一半',
 		'read' => array(
@@ -249,6 +250,9 @@ return array(
 			'_' => '排列顺序',
 			'newer_first' => '由新至旧',
 			'older_first' => '由旧至新',
+		),
+		'star' => array(
+			'when' => 'Mark an article as favourite…',	// TODO
 		),
 		'sticky_post' => '打开文章时将其置顶',
 		'title' => '阅读',

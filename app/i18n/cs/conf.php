@@ -145,6 +145,7 @@ return array(
 		'search' => 'Hledat „%s“',
 		'share' => array(
 			'_' => 'Sdílet tento dotaz pomocí odkazu',
+			'greader' => 'Shareable link to the GReader JSON',	// TODO
 			'help' => 'Pokud chcete tento dotaz s někým sdílet, uveďte tento odkaz.',
 			'html' => 'Odkaz na stránku HTML, který lze sdílet',
 			'opml' => 'Odkaz na seznam kanálů OPML, který lze sdílet',
@@ -219,7 +220,7 @@ return array(
 		),
 		'hide_read_feeds' => 'Skrýt kategorie a kanály bez nepřečtených článků (nefunguje s nastavením „Zobrazit všechny články“)',
 		'img_with_lazyload' => 'Použít režim „líné načítání“ pro načítaní obrázků',
-		'jump_next' => 'skočit na další nepřečtenou položku na stejné úrovni (kanál nebo kategorie)',
+		'jump_next' => 'skočit na další nepřečtenou položku na stejné úrovni',
 		'mark_updated_article_unread' => 'Označit aktualizované články jako nepřečtené',
 		'number_divided_when_reader' => 'Děleno dvěma v zobrazení pro čtení.',
 		'read' => array(
@@ -249,6 +250,9 @@ return array(
 			'_' => 'Pořadí řazení',
 			'newer_first' => 'Nejdříve nejnovější',
 			'older_first' => 'Nejdříve nejstarší',
+		),
+		'star' => array(
+			'when' => 'Mark an article as favourite…',	// TODO
 		),
 		'sticky_post' => 'Při otevření připnout článek na začátek',
 		'title' => 'Čtení',

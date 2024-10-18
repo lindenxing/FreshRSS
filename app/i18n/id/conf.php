@@ -145,6 +145,7 @@ return array(
 		'search' => 'Cari untuk "%s"',
 		'share' => array(
 			'_' => 'Bagikan permintaan ini melalui tautan',
+			'greader' => 'Shareable link to the GReader JSON',	// TODO
 			'help' => 'Berikan tautan ini jika Anda ingin berbagi permintaan ini dengan siapa pun',
 			'html' => 'Tautan dapat dibagikan ke halaman HTML',
 			'opml' => 'Tautan dapat dibagikan ke daftar OPML dari feed',
@@ -219,7 +220,7 @@ return array(
 		),
 		'hide_read_feeds' => 'Sembunyikan kategori & feed yang tidak memiliki artikel belum dibaca (tidak berlaku untuk konfigurasi “Tampilkan semua artikel”)',
 		'img_with_lazyload' => 'Gunakan mode “lazy load” untuk memuat gambar',
-		'jump_next' => 'loncat ke saudara yang belum dibaca berikutnya (feed atau kategori)',
+		'jump_next' => 'loncat ke saudara yang belum dibaca berikutnya',
 		'mark_updated_article_unread' => 'Tandai artikel yang diperbarui sebagai belum dibaca',
 		'number_divided_when_reader' => 'Bagi dua dalam tampilan baca.',
 		'read' => array(
@@ -249,6 +250,9 @@ return array(
 			'_' => 'Urutan penyortiran',
 			'newer_first' => 'Terbaru dulu',
 			'older_first' => 'Terlama dulu',
+		),
+		'star' => array(
+			'when' => 'Mark an article as favourite…',	// TODO
 		),
 		'sticky_post' => 'Tempelkan artikel di bagian atas saat dibuka',
 		'title' => 'Membaca',
