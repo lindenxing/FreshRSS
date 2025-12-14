@@ -12,7 +12,7 @@ kill_timeout = '5s'
   auto_rollback = true
 
 [build]
-  dockerfile = 'Dockerfile'
+  dockerfile = '/Docker/Dockerfile'
 
 [env]
   CRON_MIN = '*/20'
