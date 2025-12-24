@@ -22,93 +22,6 @@ return array(
 		'token' => 'Master authentication token',	// TODO
 		'token_help' => 'Allows access to all RSS outputs of the user as well as refreshing feeds without authentication:',	// TODO
 		'type' => 'Mòde d’autentification',
-		'unsafe_autologin' => 'Autorizar las connexions automaticas pas seguras al format : ',
-	),
-	'check_install' => array(
-		'cache' => array(
-			'nok' => 'Volgatz verificar los dreches sul repertòri <em>./data/cache</em>. Lo servidor HTTP deu poder escriure dedins',
-			'ok' => 'Los dreches sul cache son bons.',
-		),
-		'categories' => array(
-			'nok' => 'La tabla “category” es mala configurada.',
-			'ok' => 'La tabla category es corrèctament configurada.',
-		),
-		'connection' => array(
-			'nok' => 'Connexion impossibla a la basa de donadas.',
-			'ok' => 'La connexion a la basa de donadas es bona.',
-		),
-		'ctype' => array(
-			'nok' => 'Impossible de trobar una bibliotèca per la verificacion del tipe de caractèrs (php-ctype).',
-			'ok' => 'Avètz la bibliotèca per la verificacion del tipe de caractèrs (ctype).',
-		),
-		'curl' => array(
-			'nok' => 'Impossible de trobar la bibliotèca cURL( paquet php-curl).',
-			'ok' => 'Avètz la bibliotèca cURL.',
-		),
-		'data' => array(
-			'nok' => 'Volgatz verificar los dreches sul repertòri <em>./data</em>. Lo servidor HTTP deu poder escriure dedins',
-			'ok' => 'Los dreches sul repertòri data son bons.',
-		),
-		'database' => 'Installacion de la basa de donadas',
-		'dom' => array(
-			'nok' => 'Impossible de trobar una bibliotèca per percórrer lo DOM (paquet php-xml).',
-			'ok' => 'Avètz la bibliotèca per percórrer lo DOM.',
-		),
-		'entries' => array(
-			'nok' => 'La tabla entry es pas configurada coma cal.',
-			'ok' => 'La tabla entry es corrèctament configurada.',
-		),
-		'favicons' => array(
-			'nok' => 'Volgatz verificar los dreches sul repertòri <em>./data/favicons</em>. Lo servidor HTTP deu poder escriure dedins',
-			'ok' => 'Los dreches sul repertòri dels favicons son bons.',
-		),
-		'feeds' => array(
-			'nok' => 'La tabla feed es pas configurada coma cal.',
-			'ok' => 'La tabla feed es corrèctament configurada.',
-		),
-		'fileinfo' => array(
-			'nok' => 'Avètz pas PHP fileinfo (paquet fileinfo).',
-			'ok' => 'Avètz la bibliotèca fileinfo.',
-		),
-		'files' => 'Installacion dels fichièrs',
-		'json' => array(
-			'nok' => 'Avètz pas l’extension recomandada JSON (paquet php-json).',
-			'ok' => 'Avètz l’exension recomandada JSON.',
-		),
-		'mbstring' => array(
-			'nok' => 'Impossible de trobar la bibliotèca recomandada mbstring per Unicode.',
-			'ok' => 'Avètz la bibliotèca recomandada mbstring per Unicode.',
-		),
-		'pcre' => array(
-			'nok' => 'Impossible de trobar una bibliotèca per las expressions regulara (php-pcre).',
-			'ok' => 'Avètz la bibliotèca per las expressions regularas (PCRE).',
-		),
-		'pdo' => array(
-			'nok' => 'Impossible de trobar PDO o un dels drivers compatibles (pdo_mysql, pdo_sqlite, pdo_pgsql).',
-			'ok' => 'Avètz PDO e almens un des drivers compatibles (pdo_mysql, pdo_sqlite, pdo_pgsql).',
-		),
-		'php' => array(
-			'_' => 'Installacion PHP',
-			'nok' => 'Vòstra version PHP es la %s más FreshRSS demanda almens la versión %s.',
-			'ok' => 'Vòstra version PHP es %s, qu’es compatibla amb FreshRSS.',
-		),
-		'tables' => array(
-			'nok' => 'Manca una o mai tabla dins la basa de donadas.',
-			'ok' => 'Las tablas que cal existisson ben dins la basa de donadas.',
-		),
-		'title' => 'Verificacion de l’installacion',
-		'tokens' => array(
-			'nok' => 'Volgatz verificar los dreches sul repertòri <em>./data/tokens</em>. Lo servidor HTTP deu poder escriure dedins',
-			'ok' => 'Los dreches sul repertòri dels getons son bons.',
-		),
-		'users' => array(
-			'nok' => 'Volgatz verificar los dreches sul repertòri <em>./data/users</em>. Lo servidor HTTP deu poder escriure dedins',
-			'ok' => 'Los dreches sul repertòri dels utilizaires son bons.',
-		),
-		'zip' => array(
-			'nok' => 'Avètz pas l’extension ZIP (paquet php-zip).',
-			'ok' => 'Avètz l’exension ZIP.',
-		),
 	),
 	'extensions' => array(
 		'author' => 'Autor',
@@ -118,6 +31,7 @@ return array(
 		'empty_list' => 'Cap d’extensions pas installadas',
 		'empty_list_help' => 'Check the logs to determine the reason behind the empty extension list.',	// TODO
 		'enabled' => 'Activada',
+		'is_compatible' => 'Is compatible',	// TODO
 		'latest' => 'Installada',
 		'name' => 'Nom',
 		'no_configure_view' => 'Aquesta extension se pòt pas configurar.',
@@ -134,6 +48,8 @@ return array(
 		'_' => 'Estatisticas',
 		'all_feeds' => 'Totes los fluxes',
 		'category' => 'Categoria',
+		'date_published' => 'Publication date',	// TODO
+		'date_received' => 'Received date',	// TODO
 		'entry_count' => 'Nombre d’articles',
 		'entry_per_category' => 'Articles per categoria',
 		'entry_per_day' => 'Nombre d’articles per jorn (darrièrs 30 jorns)',
@@ -146,6 +62,7 @@ return array(
 		'idle' => 'Fluxes inactius',
 		'main' => 'Estatisticas principalas',
 		'main_stream' => 'Flux màger',
+		'nb_unreads' => 'Number of unread articles',	// TODO
 		'no_idle' => 'I a pas cap d’article inactiu !',
 		'number_entries' => '%d articles',	// IGNORE
 		'overview' => 'Overview',	// TODO
@@ -157,6 +74,7 @@ return array(
 		'status_unread' => 'Pas legits',
 		'title' => 'Estatisticas',
 		'top_feed' => 'Los dètz fluxes mai gròsses',
+		'unread_dates' => 'Dates with most unread articles',	// TODO
 	),
 	'system' => array(
 		'_' => 'Configuracion sistèma',

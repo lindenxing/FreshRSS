@@ -105,6 +105,16 @@ return array(
 		'none' => 'هیچ',
 		'small' => 'کوچک',
 	),
+	'notification_timeout' => array(
+		'bad' => array(
+			'label' => 'Show warning banner',	// TODO
+			'seconds' => 'seconds (at least 1)',	// TODO
+		),
+		'good' => array(
+			'label' => 'Show acknowledgement banner',	// TODO
+			'seconds' => 'seconds (0 means not shown)',	// TODO
+		),
+	),
 	'privacy' => array(
 		'_' => 'حریم خصوصی',
 		'retrieve_extension_list' => 'بازیابی لیست افزونه‌ها',
@@ -142,6 +152,7 @@ return array(
 			'categories' => ' نمایش بر اساس دسته بندی',
 			'feeds' => ' نمایش با فید',
 			'order' => ' مرتب سازی بر اساس تاریخ',
+			'publish_labels_instead_of_tags' => 'Replace <i>feed tags</i> by <i>user labels</i> in the shared RSS',	// TODO
 			'search' => ' بیان',
 			'shareOpml' => 'فعال‌سازی اشتراک‌گذاری دسته‌ها و فیدهای مربوطه با OPML',
 			'shareRss' => 'اشتراک‌گذاری RSS',
@@ -348,6 +359,7 @@ return array(
 		'skip_next_article' => ' فوکوس بعدی بدون باز کردن',
 		'skip_previous_article' => ' فوکوس قبلی بدون باز کردن',
 		'title' => ' میانبرها',
+		'toggle_aside' => 'Toggle sidebar',	// TODO
 		'toggle_media' => ' پخش/مکث رسانه',
 		'user_filter' => ' به درخواست های کاربر دسترسی پیدا کنید',
 		'user_filter_help' => ' اگر فقط یک درخواست کاربر وجود داشته باشد',

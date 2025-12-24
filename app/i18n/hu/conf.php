@@ -105,6 +105,16 @@ return array(
 		'none' => 'Egyik sem',
 		'small' => 'Kicsi',
 	),
+	'notification_timeout' => array(
+		'bad' => array(
+			'label' => 'Figyelmeztető sáv megjelenítése',
+			'seconds' => 'másodpercek (legalább 1)',
+		),
+		'good' => array(
+			'label' => 'Megerősítő sáv megjelenítése',
+			'seconds' => 'másodpercek (0 azt jelenti, hogy nincs megjelenítve)',
+		),
+	),
 	'privacy' => array(
 		'_' => 'Adatvédelem',
 		'retrieve_extension_list' => 'Kiterjesztés lista beszerzése',
@@ -142,6 +152,7 @@ return array(
 			'categories' => 'Rendezés kategória szerint',
 			'feeds' => 'Rendezés hírforrás szerint',
 			'order' => 'Rendezés dátum szerint',
+			'publish_labels_instead_of_tags' => 'A megosztott RSS-ben a <i>hírforrás-címkéket</i> <i>felhasználói címkékre</i> cserélje',
 			'search' => 'Kifejezés',
 			'shareOpml' => 'Engedélyezze a megfelelő kategóriák és hírcsatornák OPML-alapú megosztását',
 			'shareRss' => 'Engedélyezze a HTML &amp; RSS megosztást',
@@ -348,6 +359,7 @@ return array(
 		'skip_next_article' => 'Ugrás a következőre megnyitás nélkül',
 		'skip_previous_article' => 'Ugrás az előzőre megnyitás nélkül',
 		'title' => 'Gyorsgombok',
+		'toggle_aside' => 'Toggle sidebar',	// TODO
 		'toggle_media' => 'Média indítás/megállítás',
 		'user_filter' => 'Felhasználói lekérdezések elfogadása',
 		'user_filter_help' => 'Ha csak egy felhasználói lekérdezés van, akkor az kerül felhasználásra. Ellenkező esetben a lekérdezések a számuk alapján érhetőek el.',

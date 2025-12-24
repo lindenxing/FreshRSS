@@ -20,6 +20,11 @@ class FreshRSS_update_Controller extends FreshRSS_ActionController {
 				'Please git pull manually!');
 		}
 
+		if (!function_exists('exec')) {
+			throw new Minz_Exception('Error during git checkout: exec() function is disabled! ' .
+				'Please git pull manually!');
+		}
+
 		exec('git --version', $output, $return);
 		if ($return != 0) {
 			throw new Minz_Exception("Error {$return} git not found: Please update manually!");
@@ -283,13 +288,16 @@ class FreshRSS_update_Controller extends FreshRSS_ActionController {
 				$res = do_post_update();
 			}
 
-			Minz_ExtensionManager::callHookVoid('post_update');
+			Minz_ExtensionManager::callHookVoid(Minz_HookType::PostUpdate);
 
 			if ($res === true) {
 				@unlink(UPDATE_FILENAME);
 				@file_put_contents(join_path(DATA_PATH, self::LASTUPDATEFILE), '');
 				Minz_Log::notice(_t('feedback.update.finished'));
-				Minz_Request::good(_t('feedback.update.finished'));
+				Minz_Request::good(
+					_t('feedback.update.finished'),
+					showNotification: FreshRSS_Context::userConf()->good_notification_timeout > 0
+				);
 			} else {
 				Minz_Log::error(_t('feedback.update.error', is_string($res) ? $res : 'unknown'));
 				Minz_Request::bad(_t('feedback.update.error', is_string($res) ? $res : 'unknown'), [ 'c' => 'update', 'a' => 'index' ]);
@@ -332,13 +340,66 @@ class FreshRSS_update_Controller extends FreshRSS_ActionController {
 	}
 
 	/**
+	 * Check PHP and its extensions are well-installed.
+	 *
+	 * @return array<string,'ok'|'ko'|'warn'> of tested values.
+	 */
+	private static function check_install_php(): array {
+		require_once LIB_PATH . '/lib_install.php';
+		return checkRequirements(FreshRSS_Context::systemConf()->db['type'] ?? '', checkPhp: true, checkFiles: false);
+	}
+
+	/**
+	 * Check different data files and directories exist.
+	 * @return array<string,'ok'|'ko'|'warn'> of tested values.
+	 */
+	private static function check_install_files(): array {
+		require_once LIB_PATH . '/lib_install.php';
+		return checkRequirements(FreshRSS_Context::systemConf()->db['type'] ?? '', checkPhp: false, checkFiles: true);
+	}
+
+	/**
+	 * Check database is well-installed.
+	 *
+	 * @return array<string,bool> of tested values.
+	 */
+	private static function check_install_database(): array {
+		$status = [
+			'connection' => true,
+			'tables' => false,
+			'categories' => false,
+			'feeds' => false,
+			'entries' => false,
+			'entrytmp' => false,
+			'tag' => false,
+			'entrytag' => false,
+		];
+
+		try {
+			$dbDAO = FreshRSS_Factory::createDatabaseDAO();
+
+			$status['tables'] = $dbDAO->tablesAreCorrect();
+			$status['categories'] = $dbDAO->categoryIsCorrect();
+			$status['feeds'] = $dbDAO->feedIsCorrect();
+			$status['entries'] = $dbDAO->entryIsCorrect();
+			$status['entrytmp'] = $dbDAO->entrytmpIsCorrect();
+			$status['tag'] = $dbDAO->tagIsCorrect();
+			$status['entrytag'] = $dbDAO->entrytagIsCorrect();
+		} catch (Minz_PDOConnectionException $e) {
+			$status['connection'] = false;
+		}
+
+		return $status;
+	}
+
+	/**
 	 * This action displays information about installation.
 	 */
 	public function checkInstallAction(): void {
-		FreshRSS_View::prependTitle(_t('admin.check_install.title') . ' · ');
+		FreshRSS_View::prependTitle(_t('install.check._') . ' · ');
 
-		$this->view->status_php = check_install_php();
-		$this->view->status_files = check_install_files();
-		$this->view->status_database = check_install_database();
+		$this->view->status_php = self::check_install_php();
+		$this->view->status_files = self::check_install_files();
+		$this->view->status_database = self::check_install_database();
 	}
 }

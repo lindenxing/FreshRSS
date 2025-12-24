@@ -8,21 +8,21 @@ require LIB_PATH . '/lib_rss.php';	//Includes class autoloader
 
 Minz_Request::init();
 
-$token = Minz_Request::paramString('t');
+$token = Minz_Request::paramString('t', plaintext: true);
 if (!ctype_alnum($token)) {
 	header('HTTP/1.1 422 Unprocessable Entity');
 	header('Content-Type: text/plain; charset=UTF-8');
 	die('Invalid token `t`!' . $token);
 }
 
-$format = Minz_Request::paramString('f');
+$format = Minz_Request::paramString('f', plaintext: true);
 if (!in_array($format, ['atom', 'greader', 'html', 'json', 'opml', 'rss'], true)) {
 	header('HTTP/1.1 422 Unprocessable Entity');
 	header('Content-Type: text/plain; charset=UTF-8');
 	die('Invalid format `f`!');
 }
 
-$user = Minz_Request::paramString('user');
+$user = Minz_Request::paramString('user', plaintext: true);
 if (!FreshRSS_user_Controller::checkUsername($user)) {
 	header('HTTP/1.1 422 Unprocessable Entity');
 	header('Content-Type: text/plain; charset=UTF-8');
@@ -87,19 +87,19 @@ foreach (FreshRSS_Context::userConf()->queries as $raw_query) {
 		}
 		$query = new FreshRSS_UserQuery($raw_query, FreshRSS_Context::categories(), FreshRSS_Context::labels());
 		Minz_Request::_param('get', $query->getGet());
-		if (Minz_Request::paramString('order') === '') {
+		if (Minz_Request::paramString('order', plaintext: true) === '') {
 			Minz_Request::_param('order', $query->getOrder());
 		}
 		Minz_Request::_param('state', (string)$query->getState());
 
-		$search = $query->getSearch()->getRawInput();
+		$search = $query->getSearch()->__toString();
 		// Note: we disallow references to user queries in public user search to avoid sniffing internal user queries
-		$userSearch = new FreshRSS_BooleanSearch(Minz_Request::paramString('search'), 0, 'AND', allowUserQueries: false);
-		if ($userSearch->getRawInput() !== '') {
+		$userSearch = new FreshRSS_BooleanSearch(Minz_Request::paramString('search', plaintext: true), 0, 'AND', allowUserQueries: false);
+		if ($userSearch->__toString() !== '') {
 			if ($search === '') {
-				$search = $userSearch->getRawInput();
+				$search = $userSearch->__toString();
 			} else {
-				$search .= ' (' . $userSearch->getRawInput() . ')';
+				$search .= ' (' . $userSearch->__toString() . ')';
 			}
 		}
 		Minz_Request::_param('search', $search);
@@ -117,7 +117,7 @@ $view = new FreshRSS_View();
 
 try {
 	FreshRSS_Context::updateUsingRequest(false);
-	Minz_Request::_param('search', $userSearch->getRawInput());	// Restore user search
+	Minz_Request::_param('search', $userSearch->__toString());	// Restore user search
 	$view->entries = FreshRSS_index_Controller::listEntriesByContext();
 } catch (Minz_Exception) {
 	Minz_Error::error(400, 'Bad user query!');
@@ -160,6 +160,16 @@ $view->rss_url = $query->sharedUrlRss();
 $view->rss_title = $query->getName();
 $view->image_url = $query->getImageUrl();
 $view->description = $query->getDescription() ?: _t('index.feed.rss_of', $view->rss_title);
+$view->publishLabelsInsteadOfTags = $query->publishLabelsInsteadOfTags();
+$view->entryIdsTagNames = [];
+if ($view->publishLabelsInsteadOfTags && in_array($format, ['rss', 'atom'], true)) {
+	$entries = iterator_to_array($view->entries, preserve_keys: false);	// TODO: Optimise: avoid iterator_to_array if possible
+	$view->entries = $entries;
+	if (!empty($entries)) {
+		$tagDAO = FreshRSS_Factory::createTagDao();
+		$view->entryIdsTagNames = $tagDAO->getEntryIdsTagNames($entries);
+	}
+}
 if ($query->getName() != '') {
 	FreshRSS_View::_title($query->getName());
 }

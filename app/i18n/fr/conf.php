@@ -105,6 +105,16 @@ return array(
 		'none' => 'Aucun',
 		'small' => 'Petit',
 	),
+	'notification_timeout' => array(
+		'bad' => array(
+			'label' => 'Afficher la bannière d’avertissement',
+			'seconds' => 'secondes (au moins 1)',
+		),
+		'good' => array(
+			'label' => 'Afficher la bannière de confirmation',
+			'seconds' => 'secondes (0 pour désactiver)',
+		),
+	),
 	'privacy' => array(
 		'_' => 'Vie privée',
 		'retrieve_extension_list' => 'Récupération de la liste des extensions',
@@ -142,6 +152,7 @@ return array(
 			'categories' => 'Afficher par catégorie',
 			'feeds' => 'Afficher par flux',
 			'order' => 'Tri par date',
+			'publish_labels_instead_of_tags' => 'Remplacer les <i>tags des flux</i> par les <i>étiquettes d’utilisateur</i> dans le RSS partagé',
 			'search' => 'Expression',	// IGNORE
 			'shareOpml' => 'Active le partage par OPML des catégories et flux correspondants',
 			'shareRss' => 'Active le partage par HTML &amp; RSS',
@@ -348,6 +359,7 @@ return array(
 		'skip_next_article' => 'Passer au suivant sans ouvrir',
 		'skip_previous_article' => 'Passer au précédent sans ouvrir',
 		'title' => 'Raccourcis',
+		'toggle_aside' => 'Afficher/masquer la barre latérale',
 		'toggle_media' => 'Lire/arrêter le média',
 		'user_filter' => 'Accéder aux filtres utilisateur',
 		'user_filter_help' => 'S’il n’y a qu’un filtre utilisateur, celui-ci est utilisé automatiquement. Sinon ils sont accessibles par leur numéro.',
