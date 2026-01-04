@@ -18,14 +18,6 @@ kill_timeout = '5s'
   CRON_MIN = '*/20'
   FRESHRSS_THEME = 'Mapco'
   TZ = 'Asia/Shanghai'
-  FRESHRSS_DB_TYPE = 'mysql'
-  FRESHRSS_DB_HOST = 'gateway01.ap-southeast-1.prod.aws.tidbcloud.com:4000'
-  FRESHRSS_DB_USER = '3u2vuFJJFcXRTqU.root'
-  FRESHRSS_DB_BASE = 'freshrss'  # 或者你创建的数据库名
-  FRESHRSS_DB_MYSQL_SSL_ENABLE = "true"
-  FRESHRSS_DB_MYSQL_SSL_VERIFY = "true"
-  FRESHRSS_DB_MYSQL_SSL_CA = "/etc/ssl/certs/ca-certificates.crt"
-  FRESHRSS_INSTALL_FORCE_DB_CONFIG = "true"
 
 [[mounts]]
   source = 'freshrss_data'
