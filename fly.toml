@@ -25,6 +25,7 @@ kill_timeout = '5s'
   FRESHRSS_DB_MYSQL_SSL_ENABLE = "true"
   FRESHRSS_DB_MYSQL_SSL_VERIFY = "true"
   FRESHRSS_DB_MYSQL_SSL_CA = "/etc/ssl/certs/ca-certificates.crt"
+  FRESHRSS_INSTALL_FORCE_DB_CONFIG = "true"
 
 [[mounts]]
   source = 'freshrss_data'
