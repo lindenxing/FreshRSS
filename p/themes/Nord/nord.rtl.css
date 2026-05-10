@@ -415,10 +415,6 @@ svg:hover {
 	text-decoration: none;
 }
 
-.dropdown-close {
-	backdrop-filter: grayscale(25%) brightness(0.9);
-}
-
 .dropdown-close a:hover {
 	background: none;
 }
@@ -987,6 +983,10 @@ li.item.active {
 	text-align: center;
 }
 
+.nav_menu #nav_menu_toggle_aside {
+	position: static;
+}
+
 .nav_menu .btn {
 	margin: .125rem;
 }
@@ -1229,22 +1229,16 @@ optgroup::before {
 /*===========*/
 
 @media (max-width: 840px) {
-	.aside:target + .close-aside,
+	.aside.visible + .close-aside,
 	.configure .dropdown-target:target ~ .dropdown-close {
 		backdrop-filter: grayscale(60%) blur(1px);
 	}
 
 	.aside {
 		right: 0;
-		transition: width 200ms linear;
-	}
-
-	.aside.aside_feed {
-		padding: 0;
 	}
 
 	.nav.aside {
-		max-width: 300px;
 		border-radius: 0;
 	}
 
@@ -1285,6 +1279,12 @@ optgroup::before {
 
 	.nav_menu .btn {
 		margin-bottom: .5rem;
+	}
+
+	.nav_menu .stick #mark-read-menu .dropdown-toggle.btn {
+		border-right: 1px solid var(--border-elements);
+		border-top-right-radius: 6px;
+		border-bottom-right-radius: 6px;
 	}
 
 	.nav_menu .search input {

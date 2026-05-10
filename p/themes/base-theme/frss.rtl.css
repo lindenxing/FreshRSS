@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+/* Shared base loaded by every theme via the "_frss.css" entry in metadata.json. */
+
 /*=== GENERAL */
 /*============*/
 :root {
@@ -41,6 +43,8 @@
 
 	--frss-padding-flux-items: 0.75rem;
 	--frss-padding-top-bottom: 0.5rem;
+
+	--width-aside: 300px;
 
 	line-height: 1.5;
 }
@@ -971,13 +975,19 @@ input[type="checkbox"]:focus-visible {
 	padding: 0;
 	display: table;
 	table-layout: fixed;
+}
+
+.pagination .item:not(:has(a)) {
 	text-align: center;
+}
+
+.pagination-wrapper {
+	overflow-x: auto;
 }
 
 .pagination .item {
 	display: table-cell;
 	width: 3em;
-	font-style: italic;
 }
 
 .pagination .item.active {
@@ -1076,14 +1086,11 @@ input[type="checkbox"]:focus-visible {
 }
 
 .box .box-content .feed.item {
+	padding: var(--frss-padding-top-bottom) 2rem calc(var(--frss-padding-top-bottom) / 2) 0;
+	display: block;
 	font-size: 0.9rem;
 	line-height: 1.5;
 	text-indent: -3rem;
-}
-
-.box .box-content .item.feed {
-	padding: var(--frss-padding-top-bottom) 2rem calc(var(--frss-padding-top-bottom) / 2) 0;
-	display: block;
 }
 
 .box .box-content .item.feed.emptyCategory {
@@ -1275,7 +1282,7 @@ li.drag-hover {
 }
 
 .header > .item.title {
-	width: 300px;
+	width: var(--width-aside);
 	text-align: center;
 	white-space: nowrap;
 }
@@ -1323,8 +1330,12 @@ input[type="search"] {
 
 .aside {
 	display: table-cell;
-	width: 300px;
+	width: var(--width-aside);
 	vertical-align: top;
+}
+
+.aside.is-hidden {
+	display: none;
 }
 
 .aside + .close-aside {
@@ -1801,6 +1812,11 @@ a.website:hover .favicon {
 	border: 1px solid var(--frss-border-color);
 }
 
+.content pre code {
+	padding: 0;
+	border: none;
+}
+
 .subtitle > div {
 	display: inline;
 }
@@ -1918,11 +1934,10 @@ a.website:hover .favicon {
 
 /*=== Navigation menu (for articles) */
 #nav_entries {
-	display: table;
+	display: flex;
 	position: fixed;
 	bottom: 0; right: 0;
-	width: 300px;
-	table-layout: fixed;
+	width: var(--width-aside);
 	padding-bottom: env(safe-area-inset-bottom);
 	z-index: 50;
 }
@@ -1933,8 +1948,7 @@ a.website:hover .favicon {
 
 #nav_entries button {
 	background-color: transparent;
-	display: table-cell;
-	width: 33.3%;
+	flex: 1;
 	height: 3rem;
 	border: 0;
 	cursor: pointer;
@@ -2065,6 +2079,7 @@ html.slider-active {
 #slider.active:target {
 	width: 750px;
 	box-shadow: 3px 3px 5px var(--frss-box-shadow-color-transparent);
+	outline: none;
 }
 
 #slider.sliding {
@@ -2393,6 +2408,10 @@ html.slider-active {
 	font-style: italic;
 }
 
+.disabled-user {
+	opacity: 0.5;
+}
+
 /*=== READER */
 /*===========*/
 .reader .aside {
@@ -2401,7 +2420,7 @@ html.slider-active {
 
 .reader .aside.visible {
 	display: table-cell;
-	width: 300px;
+	width: var(--width-aside);
 }
 
 .reader .flux {
@@ -2486,7 +2505,10 @@ html.slider-active {
 		display: none;
 	}
 
+	/* Material navigation drawer: theme width, capped at viewport minus 56px touch-peek */
 	.aside.visible {
+		width: min(var(--width-aside), calc(100vw - 56px));
+		height: 100vh;
 		box-shadow: -3px 3px 5px var(--frss-box-shadow-color-transparent);
 	}
 
@@ -2502,7 +2524,7 @@ html.slider-active {
 	}
 
 	.aside:not(.aside_feed) {
-		overflow-y: scroll;
+		overflow-y: auto;
 	}
 
 	nav.configure > .dropdown li.item.dropdown-section:last-child,
@@ -2532,6 +2554,55 @@ html.slider-active {
 
 	.flux .flux_header .item .title:has(~.date) {
 		padding-left: 1rem;
+	}
+
+	.flux .flux_header.has-thumbnail.has-summary {
+		display: grid;
+		grid-template-columns: auto 1fr auto auto auto;
+		grid-template-rows: auto auto;
+		grid-template-areas: "website website manage-read manage-bookmark manage-share manage-labels link"
+			"thumbnail content content content content content content";
+		align-items: start;
+		list-style: none;
+	}
+
+	.flux .flux_header.has-thumbnail.has-summary li.website .websiteName {
+		display: inline;
+	}
+
+	/** place all the elements in their respective template areas */
+	.flux .flux_header.has-thumbnail.has-summary li.website {
+		grid-area: website;
+		/** Show feed name */
+		width: auto;
+	}
+
+	.flux .flux_header.has-thumbnail.has-summary li.thumbnail {
+		grid-area: thumbnail;
+	}
+
+	.flux .flux_header.has-thumbnail.has-summary li.titleAuthorSummaryDate {
+		grid-area: content;
+	}
+
+	.flux .flux_header.has-thumbnail.has-summary li.manage:has(.read) {
+		grid-area: manage-read;
+	}
+
+	.flux .flux_header.has-thumbnail.has-summary li.manage:has(.bookmark) {
+		grid-area: manage-bookmark;
+	}
+
+	.flux .flux_header.has-thumbnail.has-summary li.link {
+		grid-area: link;
+	}
+
+	.flux .flux_header.has-thumbnail.has-summary li.labels {
+		grid-area: manage-labels
+	}
+
+	.flux .flux_header.has-thumbnail.has-summary li.share {
+		grid-area: manage-share
 	}
 
 	#overlay .close {
@@ -2713,12 +2784,11 @@ html.slider-active {
 		width: 0;
 		overflow: hidden;
 		z-index: 100;
+		transition: width 200ms linear;
 	}
 
-	.aside.visible,
-	.reader .aside.visible {
-		width: 90%;
-		height: 100vh;
+	.aside.aside_feed {
+		padding: 0;
 	}
 
 	.aside_feed .configure-feeds {
@@ -2763,7 +2833,7 @@ html.slider-active {
 	}
 
 	#nav_entries {
-		display: table !important;
+		display: flex !important;
 		width: 100%;
 	}
 

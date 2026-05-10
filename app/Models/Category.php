@@ -171,6 +171,13 @@ class FreshRSS_Category extends Minz_Model {
 		$this->sortFeeds();
 	}
 
+	public function defaultSort(): ?string {
+		return $this->attributeString('defaultSort');
+	}
+	public function defaultOrder(): ?string {
+		return $this->attributeString('defaultOrder');
+	}
+
 	/**
 	 * To manually add feeds to this category (not committing to database).
 	 */
@@ -260,7 +267,11 @@ class FreshRSS_Category extends Minz_Model {
 		}
 
 		$catDAO = FreshRSS_Factory::createCategoryDao();
-		$catDAO->updateLastUpdate($this->id(), !$ok);
+		if ($ok) {
+			$catDAO->updateLastUpdate($this->id());
+		} else {
+			$catDAO->updateLastError($this->id());
+		}
 
 		return (bool)$ok;
 	}

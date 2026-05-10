@@ -54,6 +54,8 @@ return array(
 			'timeout' => 'Notificação em HTML5 de timeout',
 		),
 		'show_nav_buttons' => 'Mostrar botões de navegação',
+		'show_title_unread' => 'Mostrar o número de artigos não lidos no título',
+		'sidebar_hidden_by_default' => 'Hide sidebar by default',	// TODO
 		'theme' => array(
 			'_' => 'Tema',
 			'deprecated' => array(
@@ -105,6 +107,9 @@ return array(
 		'none' => 'Nenhum',
 		'small' => 'Pequeno',
 	),
+	'notification' => array(
+		'html5_enable_notif' => 'Enable notification',	// TODO
+	),
 	'notification_timeout' => array(
 		'bad' => array(
 			'label' => 'Mostrar banner de aviso',
@@ -118,6 +123,7 @@ return array(
 	'privacy' => array(
 		'_' => 'Privacidade',
 		'retrieve_extension_list' => 'Recuperar lista de extensões',
+		'send_referrer_allowlist' => 'Sites allowed to see your server address (%s)',	// TODO
 	),
 	'profile' => array(
 		'_' => 'Gerenciamento de perfil',
@@ -145,6 +151,7 @@ return array(
 	),
 	'query' => array(
 		'_' => 'Consultas do usuário',
+		'create' => 'Create new user query',	// TODO
 		'deprecated' => 'Esta não é mais válida. A categoria ou feed relacionado foi deletado.',
 		'description' => 'Descrição',
 		'filter' => array(
@@ -275,6 +282,7 @@ return array(
 			'upon_gone' => 'Quando não estiver mais no feed de notícias principais',
 			'upon_reception' => 'ao receber um artigo',
 			'when' => 'Marcar artigo como lido…',
+			'when_same_guid_in_category' => 'if an identical GUID already exists in the top <i>n</i> newest articles of the category',	// TODO
 			'when_same_title_in_category' => 'se um título idêntico já existir entre os <i>n</i> artigos mais recentes da categoria',
 			'when_same_title_in_feed' => 'Se um título idêntico já existir nos últimos <i>n</i> artigos mais novos (do feed)',
 		),
@@ -291,11 +299,6 @@ return array(
 		),
 		'show_fav_unread_help' => 'Aplicar também nas tags',
 		'sides_close_article' => 'Clicando fora da área do texto do artigo fecha o mesmo',
-		'sort' => array(
-			'_' => 'Ordem de visualização',
-			'newer_first' => 'Novos primeiro',
-			'older_first' => 'Antigos primeiro',
-		),
 		'star' => array(
 			'when' => 'Marque um artigo como favorito…',
 		),
@@ -324,7 +327,7 @@ return array(
 		'share_name' => 'Nome de visualização para compartilhar',
 		'share_url' => 'URL utilizada para compartilhar',
 		'title' => 'Compartilhando',
-		'twitter' => 'Twitter',	// IGNORE
+		'twitter' => 'X (Twitter)',	// IGNORE
 		'wallabag' => 'wallabag',	// IGNORE
 	),
 	'shortcut' => array(
